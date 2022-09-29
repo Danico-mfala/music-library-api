@@ -1,5 +1,5 @@
 const handleAPIError = require("~root/utils/handleAPIError");
-const fetchAllArtists = require("~root/actions/Artists/fetchAllArtists");
+const fetchAllArtists = require("~root/actions/Artists/fecthAllArtists");
 
 const getAllArtists = async (req, res) => {
   try {
