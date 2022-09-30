@@ -8,7 +8,7 @@ safeDescribe("#GET /artists/:artistId/albums", () => {
 
   it("should select albums by artist id ", async () => {
     const res = await resquest(router)
-      .get("/artists/${artistId/albums")
+      .get(`/artists/${artistId}/albums`)
       .send();
 
     expect(res, statusCode).to.equal(201);

@@ -16,8 +16,8 @@ safeDescribe("#POST Albums", () => {
     const response = await request(router)
       .post(`/artists/${artistId}/album`)
       .send({
-        name: "Whaaat!",
-        year: 1992
+        name: "Chute libre",
+        year: 2014
       });
 
     insertedAlbumId = response.body.albumId;
