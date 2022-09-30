@@ -17,7 +17,7 @@ safeDescribe("#POST artists", () => {
         name: "DANICO SAN",
         genre: "ROCK"
       });
-    artistIdCreated = response.body.artistId;
+    // artistIdCreated = response.body.artistId;
 
     expect(response.status).to.equal(201);
   });
