@@ -12,7 +12,7 @@ safeDescribe("#POST Albums", () => {
     await deleteAlbumById({ albumId: insertedAlbumId });
   });
 
-  xit("creates a new album in the database", async () => {
+  it("creates a new album in the database", async () => {
     const response = await request(router)
       .post(`/artists/${artistId}/album`)
       .send({
