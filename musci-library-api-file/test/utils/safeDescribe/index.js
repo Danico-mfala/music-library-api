@@ -9,7 +9,16 @@ const {
 const getTableNames = require("../getTableNames");
 const revertTableData = require("./queries/revertTableData");
 
-const DML_STATEMENTS = ["insert ", "create ", "update ", "delete "];
+const DML_STATEMENTS = [
+  "insert ",
+  "create ",
+  "update ",
+  "delete ",
+  "INSERT",
+  "CREATE",
+  "UPDATE",
+  "DELETE"
+];
 
 async function getTables() {
   const tableNames = await getTableNames();
@@ -31,11 +40,11 @@ function suitePatchesAfter() {
     const queries = [..._getQueryLog()];
 
     const dataModificationQueries = queries
-      .map(q => q.toLowerCase())
-      .filter(query =>
-        DML_STATEMENTS.some(statement => query.includes(statement))
-      )
+      .filter(query => {
+        return DML_STATEMENTS.some(statement => query.includes(statement));
+      })
       .join("");
+
     const tablesToRevert = tableNames
       .map(t => t.tableName)
       .filter(table => dataModificationQueries.includes(` ${table}`));
