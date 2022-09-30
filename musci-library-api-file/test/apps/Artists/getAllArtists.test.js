@@ -2,23 +2,18 @@ const { expect } = require("chai");
 const request = require("supertest");
 const router = require("~root/app");
 const safeDescribe = require("~test/utils/safeDescribe");
-// const deleteArtistById = require("./queries/deleteArtistsById");
 
-safeDescribe("#POST artists", () => {
-  // let artistIdCreated;
+safeDescribe("#GET /artists/:artistId/albums", () => {
+  const artistId = 3;
 
-  // after(async () => {
-  //     await deleteArtistById({ artistId: artistIdCreated });
-  // });
-  it("creates a new artist in the database", async () => {
-    const response = await request(router)
-      .post("/artists")
-      .send({
-        name: "DANICO SAN",
-        genre: "ROCK"
-      });
-    // artistIdCreated = response.body.artistId;
+  it("should select albums by artist id", async () => {
+    const res = await request(router)
+      .get(`/artists/${artistId}/albums`)
+      .send();
 
-    expect(response.status).to.equal(201);
+    expect(res.statusCode).to.equal(201);
+    expect(res.body).to.eql({
+      album: [{ albumId: 4, name: "Between Us", year: 2019, artistId: 3 }]
+    });
   });
 });
