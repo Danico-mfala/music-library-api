@@ -1,26 +1,20 @@
 const { expect } = require("chai");
 const request = require("supertest");
+// eslint-disable-next-line import/no-unresolved
 const router = require("~root/app");
+// eslint-disable-next-line import/no-unresolved
 const safeDescribe = require("~test/utils/safeDescribe");
-const deleteAlbumById = require("./queries/deleteAlbumById");
 
 safeDescribe("#POST Albums", () => {
-  let insertedAlbumId;
-  const artistId = 3;
-
-  after(async () => {
-    await deleteAlbumById({ albumId: insertedAlbumId });
-  });
-
   it("creates a new album in the database", async () => {
     const response = await request(router)
-      .post(`/artists/${artistId}/album`)
+      .post(`/albums`)
       .send({
         name: "Chute libre",
-        year: 2014
+        year: 2014,
+        artistId: 1
       });
 
-    insertedAlbumId = response.body.albumId;
     expect(response.status).to.equal(201);
   });
 });

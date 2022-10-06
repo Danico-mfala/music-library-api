@@ -1,6 +1,8 @@
 const { expect } = require("chai");
 const request = require("supertest");
+// eslint-disable-next-line import/no-unresolved
 const router = require("~root/app");
+// eslint-disable-next-line import/no-unresolved
 const safeDescribe = require("~test/utils/safeDescribe");
 
 safeDescribe("#GET albums", () => {

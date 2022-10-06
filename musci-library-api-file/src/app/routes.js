@@ -6,6 +6,7 @@ const putUserDetails = require("./controllers/users/putUserDetails");
 const authentication = require("./middlewares/authentication");
 const authorise = require("./middlewares/authorisation");
 const getUserTypes = require("./controllers/users/userTypes");
+// eslint-disable-next-line import/no-unresolved
 const { ADMIN } = require("~root/constants/userTypes");
 
 // Artists
